@@ -1,14 +1,8 @@
-- title: WANCDR: Weighted Attention Network for CDR
-  authors: Aimed Lab; ...
-  venue: ...
+- title: "WANCDR: Weighted Attention Network for CDR"
+  authors: "Aimed Lab; ..."
+  venue: "..."
   year: 2025
   tags: [wancdr, cdr, attention]
-  link: /wancdr/        # ← 방금 넣은 index.html로 연결
+  link: /wancdr/        # ← web/wancdr/index.html 로 연결됨
   pdf:
   code:
-
-- title: "About"
-  url: "/about/"
-
-- title: "Projects"
-  url: "/projects/"
