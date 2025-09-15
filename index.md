@@ -12,7 +12,7 @@ title: ""
       {{ site.author.role }} · {{ site.author.org }} · {{ site.author.location }}
     </p>
     <p style="margin:0 0 14px 0;">
-      Research Interest: Segmentation, LLM, 
+      Research Interest: Segmentation, LLM
     </p>
     <div style="display:flex; gap:10px; flex-wrap:wrap;">
       <a class="btn" href="/papers/">📄 Papers</a>
