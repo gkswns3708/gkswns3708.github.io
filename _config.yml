@@ -21,26 +21,18 @@ skin: daylight
 
 
 # --- Author / Social (used on index.md) ---
-author:
-name: Aimed Lab
-email: aimedlab123123@gmail.com
-org: AimedLab Space
-role: Researcher
-location: Seoul, Korea
+author: HanJun Choi
+name: HanJun Choi
+email: gkswns1290@gmail.com
+org: Aimed-lab
+role: PhD Candidate
+location: Gwangju, Korea
 avatar: /assets/img/profile.jpg
-github: aimedlab123123 # GitHub username
-scholar: "" # Google Scholar user id, e.g., citations?user=XXXXX
-linkedin: "" # linkedin username or full URL
-twitter: "" # X handle (optional)
+github: gkswns3708 # GitHub username
 
 
 # Permalinks for posts (optional)
 permalink: /:categories/:year/:month/:day/:title/
-
-
-# RSS / Sitemap (optional extra config)
-feed:
-path: feed.xml
 
 
 # Exclude folders from build if needed (optional)
