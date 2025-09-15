@@ -8,8 +8,11 @@ permalink: /papers/
 
 <ul id="paperList" style="list-style:none; padding-left:0;">
 {% for p in site.data.papers %}
-  <li class="paper-item" data-search="{{ p.title | downcase }} {{ p.authors | downcase }} {{ p.venue | downcase }} {{ p.year }} {% if p.tags %}{{ p.tags | join: ' ' | downcase }}{% endif %}"
-      style="margin:0 0 16px 0; padding:14px; border:1px solid #eee; border-radius:12px;">
+    <li class="paper-item"
+        role="link" tabindex="0"
+        data-href="{{ p.link | default: '/web/index.html' | relative_url }}"
+        data-search="{{ p.title | downcase }} {{ p.authors | downcase }} {{ p.venue | downcase }} {{ p.year }} {% if p.tags %}{{ p.tags | join: ' ' | downcase }}{% endif %}"
+        style="margin:0 0 16px 0; padding:14px; border:1px solid #eee; border-radius:12px; cursor:pointer;">
     <div style="display:flex; justify-content:space-between; gap:12px; align-items:baseline; flex-wrap:wrap;">
       <div>
         <strong>{{ p.title }}</strong>
@@ -33,6 +36,7 @@ permalink: /papers/
 
 <script>
 (function(){
+  // --- 기존 검색 스크립트 ---
   const input = document.getElementById('paperSearch');
   const items = Array.from(document.querySelectorAll('.paper-item'));
   function norm(s){ return (s||'').toLowerCase().normalize('NFKD'); }
@@ -43,5 +47,25 @@ permalink: /papers/
       li.style.display = hay.includes(q) ? '' : 'none';
     });
   });
+
+  // --- 새로 추가: 카드 전체 클릭/키보드 이동 ---
+  items.forEach(li => {
+    // 마우스 클릭 시: li 내부 a를 눌렀다면 li 네비게이션 막기
+    li.addEventListener('click', (e) => {
+      if (e.target.closest('a')) return; // 기존 링크(PDF/Code/Open index)는 그대로 동작
+      const url = li.dataset.href;
+      if (url) window.location.href = url;
+    });
+
+    // 키보드 지원: Enter/Space로 이동
+    li.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        const url = li.dataset.href;
+        if (url) window.location.href = url;
+      }
+    });
+  });
 })();
 </script>
+
