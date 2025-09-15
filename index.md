@@ -31,7 +31,14 @@ title: ""
 <hr>
 
 ### 소개
-간단한 자기소개를 여기에 적으세요. 최근 관심 프로젝트, 논문, 강연 등.
+Hi! I’m **Hanjun Choi**, an M.S. student in the AIMED Lab at GIST, aiming to become an AI researcher who builds models that work in real-world, diverse settings. I led **WANCDR** as the **sole first author**, with **Prof. Mansu Kim** as the corresponding author—a Wasserstein-adversarial framework that aligns preclinical (GDSC) and clinical (TCGA) gene-expression domains to improve drug-response prediction and generalization to unseen drugs. &#x20;
+
+I’m currently exploring **medical image segmentation**, **LLMs** (for clinical reasoning and multi-modal workflows), and **chemical property modeling** (molecular representations, structure–activity prediction). I enjoy rigorous problem-solving and build end-to-end systems in **C++**, **Python**, and **PyTorch**.
+
+**Contact**
+Email: [gkswns3708@naver.com](mailto:gkswns3708@naver.com)
+GitHub: [https://github.com/gkswns3708](https://github.com/gkswns3708)
+
 
 - Overall about Medical AI
 

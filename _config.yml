@@ -1,11 +1,11 @@
 # --- Basic site info ---
-title: Aimed Lab
+title: HanJun Choi
 lang: ko
 timezone: Asia/Seoul
 
 
 description: >-
-Researcher / Developer. 관심사: AI for Health, Graph ML, RL, Neuroimaging.
+Researcher / Developer. 관심사: Segmentation, LLM, Chemical Interaction, Drug Response Prediction 
 
 
 # --- Theme ---
