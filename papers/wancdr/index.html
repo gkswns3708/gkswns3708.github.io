@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="description" content="WANCDR: Wasserstein Adversarial Network for Cancer Drug Response" />
+  <meta name="keywords" content="WANCDR, Cancer Drug Response, WGAN, Domain Adaptation, GNN" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>WANCDR: Wasserstein Adversarial Network for Cancer Drug Response</title>
+
+  <!-- Fonts & CSS -->
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet" />
+  <link rel="stylesheet" href="/static/css/bulma.min.css" />
+  <link rel="stylesheet" href="/static/css/bulma-carousel.min.css" />
+  <link rel="stylesheet" href="/static/css/bulma-slider.min.css" />
+  <link rel="stylesheet" href="/static/css/fontawesome.all.min.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css" />
+  <link rel="stylesheet" href="/static/css/index.css" />
+  <link rel="icon" href="/static/images/favicon.svg" />
+
+  <style>
+    #alignment figure figcaption { font-size: 0.9rem; color: #4a4a4a; margin-top: .5rem; text-align: center; }
+    .publication-links .button { margin: .25rem .25rem; }
+  </style>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="/static/js/fontawesome.all.min.js"></script>
+  <script src="/static/js/bulma-carousel.min.js"></script>
+  <script src="/static/js/bulma-slider.min.js"></script>
+  <script src="/static/js/index.js"></script>
+</head>
+<body>
+
+<nav class="navbar" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a class="navbar-item" href="/">Home</a>
+    <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+      <span aria-hidden="true"></span><span aria-hidden="true"></span><span aria-hidden="true"></span>
+    </a>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h1 class="title is-1 publication-title">WANCDR: Wasserstein Adversarial Network for Cancer Drug Response</h1>
+
+          <div class="is-size-5 publication-authors">
+            <span class="author-block"><a href="#">HanJun Choi</a><sup>1</sup>,</span>
+            <span class="author-block"><a href="#">Mansu Kim</a><sup>1*</sup></span>
+          </div>
+          <div class="is-size-6 publication-authors">
+            <span class="author-block"><sup>1</sup>Department of AI Convergence, GIST, Korea</span>
+            <span class="author-block"> &nbsp; <sup>*</sup>Corresponding author</span>
+          </div>
+
+          <div class="column has-text-centered">
+            <div class="publication-links">
+              <span class="link-block">
+                <a href="/static/papers/WANCDR.pdf" class="external-link button is-normal is-rounded is-dark" target="_blank">
+                  <span class="icon"><i class="fas fa-file-pdf"></i></span>
+                  <span>Paper (PDF)</span>
+                </a>
+              </span>
+              <span class="link-block">
+                <a href="https://github.com/yourname/wancdr" class="external-link button is-normal is-rounded is-dark" target="_blank">
+                  <span class="icon"><i class="fab fa-github"></i></span>
+                  <span>Code(Comming Soon🥹)</span>
+                </a>
+              </span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="abstract">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Abstract</h2>
+        <div class="content has-text-justified">
+          <p>
+            Predicting patient-specific drug responses from preclinical cell-line data remains challenging due to significant heterogeneity between
+            preclinical (cell-line) and clinical (patient) gene expression profiles. In this study, we propose WANCDR, a novel adversarial neural network
+            framework designed to improve the generalization of drug-response predictions by aligning latent representations across preclinical and clinical
+            domains. Specifically, we introduce a domain alignment module trained adversarially, which enforces the encoder to generate domain-invariant latent
+            embeddings. Extensive experiments conducted on preclinical (GDSC) and clinical (TCGA) datasets demonstrate that WANCDR achieves robust predictive
+            performance on preclinical data, while substantially outperforming existing approaches in clinical generalization, particularly when classifying
+            responses for previously unseen drugs. Qualitative analyses via UMAP visualization further validate the superior domain alignment capability of
+            WANCDR. Collectively, these results highlight the potential of WANCDR to bridge the translational gap from preclinical insights to clinical
+            applications.
+          </p>
+          <p><em>Keywords:</em> Graph neural network · Cancer drug response · Wasserstein Adversarial Network</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="alignment">
+  <div class="container is-max-desktop">
+    <h2 class="title is-3">Latent Alignment: UMAP Visualizations</h2>
+    <p class="is-size-6 has-text-grey">
+      (a) Before Training – clear domain gap; (b) DeepCDR – cluster separation is reinforced (overfits to GDSC);
+      (c) WANCDR – reduces the gap via adversarial alignment, improving TCGA generalization.
+    </p>
+
+    <div class="columns is-variable is-4 is-multiline">
+      <div class="column is-one-third">
+        <figure class="image">
+          <img src="/static/images/wancdr/umap_before.png" alt="(a) Before Training: clear gap between GDSC and TCGA" loading="lazy">
+          <figcaption>(a) Before Training — Strong domain gap between GDSC (blue) and TCGA (orange).</figcaption>
+        </figure>
+      </div>
+      <div class="column is-one-third">
+        <figure class="image">
+          <img src="/static/images/wancdr/umap_deepcdr.png" alt="(b) DeepCDR: domain-specific features; overfitting to GDSC" loading="lazy">
+          <figcaption>(b) DeepCDR — Learns discriminative yet domain-specific features (overfit to GDSC).</figcaption>
+        </figure>
+      </div>
+      <div class="column is-one-third">
+        <figure class="image">
+          <img src="/static/images/wancdr/umap_wancdr.png" alt="(c) WANCDR: aligned latent space for transfer to TCGA" loading="lazy">
+          <figcaption>(c) WANCDR — Narrows the domain gap; aligned latents enable transfer to TCGA.</figcaption>
+        </figure>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="intuition">
+  <div class="container is-max-desktop">
+    <h2 class="title is-3">Why This Experiment? (Intuition)</h2>
+    <div class="content">
+      <p>
+        <strong>Problem.</strong> Cell-line (GDSC) and patient (TCGA) distributions differ markedly. A model optimized only
+        for GDSC tends to learn <em>domain-specific</em> features; UMAP shows separated clusters, and predictions do not transfer to TCGA.
+      </p>
+      <p>
+        <strong>WANCDR.</strong> We adversarially align latent representations using a Wasserstein critic with unlabeled TCGA.
+        This reduces the source–target domain gap while preserving predictive structure, improving clinical generalization,
+        including for <em>unseen drug–gene pairs</em>.
+      </p>
+      <p>
+        <strong>Takeaway.</strong> DeepCDR reinforces the gap (good on GDSC, weak transfer), whereas WANCDR narrows it and
+        performs robustly on TCGA.
+      </p>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="tables">
+  <div class="container is-max-desktop">
+    <div class="table-container">
+      <table class="table is-striped is-hoverable is-fullwidth">
+        <caption>TCGA performance on seen vs. unseen drug–gene expression pairs (mean (std)).</caption>
+        <thead>
+          <tr>
+            <th>Dataset</th>
+            <th>Model</th>
+            <th>AUC</th>
+            <th>ACC</th>
+            <th>Precision</th>
+            <th>Recall</th>
+            <th>F1</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td scope="rowgroup" rowspan="2">Seen</td>
+            <td>WANCDR</td>
+            <td><strong>0.690(0.048)</strong></td>
+            <td><strong>0.660(0.029)</strong></td>
+            <td><strong>0.671(0.027)</strong></td>
+            <td><strong>0.569(0.144)</strong></td>
+            <td><strong>0.604(0.087)</strong></td>
+          </tr>
+          <tr>
+            <td>DeepCDR</td>
+            <td>0.554(0.044)</td>
+            <td>0.595(0.045)</td>
+            <td>0.639(0.097)</td>
+            <td>0.431(0.121)</td>
+            <td>0.496(0.054)</td>
+          </tr>
+          <tr>
+            <td scope="rowgroup" rowspan="2">Unseen</td>
+            <td>WANCDR</td>
+            <td><strong>0.632(0.017)</strong></td>
+            <td><strong>0.622(0.015)</strong></td>
+            <td><strong>0.641(0.031)</strong></td>
+            <td><strong>0.623(0.143)</strong></td>
+            <td><strong>0.622(0.059)</strong></td>
+          </tr>
+          <tr>
+            <td>DeepCDR</td>
+            <td>0.534(0.040)</td>
+            <td>0.568(0.022)</td>
+            <td>0.597(0.058)</td>
+            <td>0.614(0.239)</td>
+            <td>0.573(0.107)</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="table-container" style="margin-top:2rem;">
+      <table class="table is-striped is-hoverable is-fullwidth">
+        <caption>Comparison on preclinical (GDSC) and clinical (TCGA) datasets: WANCDR vs. DeepCDR (mean (std)).</caption>
+        <thead>
+          <tr>
+            <th>Dataset</th>
+            <th>Model</th>
+            <th>AUC</th>
+            <th>ACC</th>
+            <th>Precision</th>
+            <th>Recall</th>
+            <th>F1</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="rowgroup" rowspan="2">GDSC</td>
+            <td>WANCDR</td>
+            <td>0.815(0.010)</td>
+            <td>0.753(0.023)</td>
+            <td>0.284(0.019)</td>
+            <td>0.723(0.032)</td>
+            <td>0.407(0.016)</td>
+          </tr>
+          <tr>
+            <td>DeepCDR</td>
+            <td><strong>0.832(0.002)</strong></td>
+            <td><strong>0.762(0.017)</strong></td>
+            <td><strong>0.295(0.014)</strong></td>
+            <td><strong>0.737(0.022)</strong></td>
+            <td><strong>0.421(0.011)</strong></td>
+          </tr>
+          <tr>
+            <td scope="rowgroup" rowspan="2">TCGA</td>
+            <td>WANCDR</td>
+            <td><strong>0.672(0.032)</strong></td>
+            <td><strong>0.644(0.024)</strong></td>
+            <td><strong>0.656(0.015)</strong></td>
+            <td><strong>0.561(0.096)</strong></td>
+            <td><strong>0.601(0.059)</strong></td>
+          </tr>
+          <tr>
+            <td>DeepCDR</td>
+            <td>0.550(0.030)</td>
+            <td>0.574(0.028)</td>
+            <td>0.609(0.070)</td>
+            <td>0.416(0.143)</td>
+            <td>0.496(0.054)</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+  </div>
+</section>
+
+<section class="section" id="BibTeX">
+  <div class="container is-max-desktop content">
+    <h2 class="title">BibTeX</h2>
+<pre><code>@misc{choi2025wancdr,
+  author    = {HanJun Choi and Mansu Kim},
+  title     = {WANCDR: Wasserstein Adversarial Network for Cancer Drug Response},
+  year      = {2025},
+  note      = {Manuscript}
+}</code></pre>
+    <p class="is-size-7 has-text-grey">Update venue/year as appropriate.</p>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container">
+    <div class="content has-text-centered">
+      <a class="icon-link" href="/static/papers/WANCDR.pdf" aria-label="PDF">
+        <i class="fas fa-file-pdf"></i>
+      </a>
+      <a class="icon-link" href="https://github.com/yourname/wancdr" aria-label="GitHub">
+        <i class="fab fa-github"></i>
+      </a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
