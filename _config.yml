@@ -3,37 +3,30 @@ title: HanJun Choi
 lang: ko
 timezone: Asia/Seoul
 
-
 description: >-
-Researcher / Developer. 관심사: Segmentation, LLM, Chemical Interaction, Drug Response Prediction 
-
+  Researcher / Developer. 관심사: Segmentation, LLM, Chemical Interaction, Drug Response Prediction
 
 # --- Theme ---
-remote_theme: ngzhio/jekyll-theme-hamilton # or zivong/jekyll-theme-hamilton
+remote_theme: ngzhio/jekyll-theme-hamilton
 plugins:
-- jekyll-remote-theme
-- jekyll-sitemap
-- jekyll-feed
-
+  - jekyll-remote-theme
+  - jekyll-sitemap
+  - jekyll-feed
 
 # Choose one: daylight | midnight | sunrise | sunset
-skin: daylight
+skin: midnight
 
-
-# --- Author / Social (used on index.md) ---
-author: 
-name: HanJun Choi
+# --- Hamilton이 기대하는 "최상위" 메타 ---
+author: "HanJun Choi"             # 문자열(이름)
+avatar: /assets/img/profile.png    # 아바타 이미지 경로 (루트 기준)
 email: gkswns1290@gmail.com
-org: Aimed-lab
-role: PhD Candidate
 location: Gwangju, Korea
-avatar: /assets/img/profile.png
-github: gkswns3708 # GitHub username
-linkedin: "한준-최-b8ab5123a"
+
+# --- 내 페이지에서 쓸 추가 정보(선택, 자유 키) ---
+role: "PhD Candidate"
+org: "Aimed-lab"
+github: gkswns3708
+linkedin: "https://www.linkedin.com/in/한준-최-b8ab5123a"  # 전체 URL 권장
 
 # Permalinks for posts (optional)
 permalink: /:categories/:year/:month/:day/:title/
-
-
-# Exclude folders from build if needed (optional)
-# exclude: ["node_modules", "scripts"]
