@@ -3,6 +3,6 @@
   venue: "..."
   year: 2025
   tags: [wancdr, cdr, attention]
-  link: /wancdr/        # ← web/wancdr/index.html 로 연결됨
+  link: /web/wancdr/      # ← web/wancdr/index.html 로 연결됨
   pdf:
   code:

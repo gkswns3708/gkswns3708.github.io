@@ -12,7 +12,7 @@ title: ""
       {{ site.author.role }} · {{ site.author.org }} · {{ site.author.location }}
     </p>
     <p style="margin:0 0 14px 0;">
-      연구 관심사: Graph ML, Survival Analysis, EHR, Neuroimaging, RL, Generative Models
+      Research Interest: Segmentation, LLM, 
     </p>
     <div style="display:flex; gap:10px; flex-wrap:wrap;">
       <a class="btn" href="/papers/">📄 Papers</a>
@@ -33,8 +33,6 @@ title: ""
 ### 소개
 간단한 자기소개를 여기에 적으세요. 최근 관심 프로젝트, 논문, 강연 등.
 
-- GCT for PCI reintervention prediction (EHR)
-- Cognitive resilience in Alzheimer’s disease (SC/FC)
-- Diffusion-based weak supervision for anomaly detection
+- Overall about Medical AI
 
-> 블로그 포스트를 운영하실 거라면 `_posts/`에 마크다운 파일을 추가하고 `layout: post`로 작성하면 됩니다.
+
