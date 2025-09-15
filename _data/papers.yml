@@ -1,8 +1,7 @@
-- title: "WANCDR: Weighted Attention Network for CDR"
-  authors: "Aimed Lab; ..."
-  venue: "..."
+- title: "WANCDR: Wasserstein Adversarial Network for Cancer Drug Response"
+  authors: "HanJun Choi"
   year: 2025
-  tags: [wancdr, cdr, attention]
-  link: /web/wancdr/      # ← web/wancdr/index.html 로 연결됨
+  tags: [Wasserstein, Adversarial, Drug Response Prediction, Domain Adaptation, Gene Expression]
+  link: /web/wancdr/
   pdf:
   code:
