@@ -17,6 +17,22 @@
   <link rel="stylesheet" href="./static/css/index.css" />
   <link rel="icon" href="./static/images/favicon.svg" />
 
+  <!-- Small page-specific styles (tables, captions) -->
+  <style>
+    /* Keep tables within max width; allow smooth horizontal scroll on mobile */
+    #tables .table-container { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+    #tables table { width: 100%; table-layout: auto; }
+    #tables caption { caption-side: top; text-align: left; font-weight: 600; margin-bottom: .5rem; }
+    #tables td[rowspan], #tables th[rowspan] { vertical-align: middle; }
+    #tables thead th:nth-child(n+3), #tables tbody td:nth-child(n+3) { text-align: right; } /* numeric cols */
+
+    /* Figure captions */
+    #alignment figure figcaption { font-size: 0.9rem; color: #4a4a4a; margin-top: .5rem; text-align: center; }
+
+    /* Tighten minor spacings */
+    .publication-links .button { margin: .25rem .25rem; }
+  </style>
+
   <!-- JS -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script defer src="./static/js/fontawesome.all.min.js"></script>
@@ -42,7 +58,9 @@
         <a class="navbar-link">More</a>
         <div class="navbar-dropdown">
           <a class="navbar-item" href="#abstract">Abstract</a>
-          <a class="navbar-item" href="#results">Results</a>
+          <a class="navbar-item" href="#alignment">Figures</a>
+          <a class="navbar-item" href="#intuition">Intuition</a>
+          <a class="navbar-item" href="#tables">Results</a>
           <a class="navbar-item" href="#BibTeX">BibTeX</a>
         </div>
       </div>
@@ -62,45 +80,28 @@
             <span class="author-block"><a href="#">HanJun Choi</a><sup>1</sup>,</span>
             <span class="author-block"><a href="#">Mansu Kim</a><sup>1*</sup></span>
           </div>
-          <div class="is-size-5 publication-authors">
+          <div class="is-size-6 publication-authors">
             <span class="author-block"><sup>1</sup>Department of AI Convergence, GIST, Korea</span>
+            <span class="author-block"> &nbsp; <sup>*</sup>Corresponding author</span>
           </div>
 
           <div class="column has-text-centered">
             <div class="publication-links">
               <!-- PDF -->
               <span class="link-block">
-                <!-- Put your paper under ./static/papers/WANCDR.pdf or change href -->
                 <a href="./static/papers/WANCDR.pdf" class="external-link button is-normal is-rounded is-dark">
                   <span class="icon"><i class="fas fa-file-pdf"></i></span>
                   <span>Paper (PDF)</span>
                 </a>
               </span>
-              <!-- (Optional) arXiv -->
-              <!-- <span class="link-block">
-                <a href="https://arxiv.org/abs/xxxx.xxxxx" class="external-link button is-normal is-rounded is-dark">
-                  <span class="icon"><i class="ai ai-arxiv"></i></span><span>arXiv</span>
-                </a>
-              </span> -->
-              <!-- (Optional) Video -->
-              <!-- <span class="link-block">
-                <a href="https://www.youtube.com/..." class="external-link button is-normal is-rounded is-dark">
-                  <span class="icon"><i class="fab fa-youtube"></i></span><span>Video</span>
-                </a>
-              </span> -->
-              <!-- (Optional) Code -->
+              <!-- Code -->
               <span class="link-block">
                 <a href="https://github.com/yourname/wancdr" class="external-link button is-normal is-rounded is-dark">
                   <span class="icon"><i class="fab fa-github"></i></span>
                   <span>Code</span>
                 </a>
               </span>
-              <!-- (Optional) Data -->
-              <!-- <span class="link-block">
-                <a href="#" class="external-link button is-normal is-rounded is-dark">
-                  <span class="icon"><i class="far fa-images"></i></span><span>Data</span>
-                </a>
-              </span> -->
+              <!-- (Optional) arXiv / Video / Data buttons can be added similarly -->
             </div>
           </div>
 
@@ -109,17 +110,6 @@
     </div>
   </div>
 </section>
-
-<!-- (Optional) Hero teaser (remove if not using) -->
-<!--
-<section class="hero teaser">
-  <div class="container is-max-desktop">
-    <div class="hero-body has-text-centered">
-      <h2 class="subtitle">Domain-invariant latent alignment for robust preclinical→clinical generalization.</h2>
-    </div>
-  </div>
-</section>
--->
 
 <!-- ABSTRACT -->
 <section class="section" id="abstract">
@@ -143,144 +133,177 @@
         </div>
       </div>
     </div>
-
-    <!-- (Optional) Method figure placeholder -->
-    <!--
-    <div class="columns is-centered">
-      <div class="column is-full-width has-text-centered">
-        <h2 class="title is-3">Method Overview</h2>
-        <figure class="image is-16by9">
-          <img src="./static/images/wancdr_architecture.png" alt="WANCDR architecture diagram" />
-        </figure>
-        <p class="is-size-6 has-text-grey">An encoder aligns gene-expression latents with a WGAN critic; drug features are encoded via GCN and fused for prediction.</p>
-      </div>
-    </div>
-    -->
   </div>
 </section>
 
-<!-- RESULTS -->
-<section class="section" id="results">
+<!-- FIGURES: UMAP ALIGNMENT -->
+<section class="section" id="alignment">
   <div class="container is-max-desktop">
-    <div class="columns is-centered">
-      <div class="column is-full-width">
-        <h2 class="title is-3">Results (Summary)</h2>
-        <div class="content has-text-justified">
-          <p>
-            WANCDR shows competitive performance on <strong>GDSC</strong> (preclinical) and substantially
-            better generalization on <strong>TCGA</strong> (clinical), including for previously <strong>unseen drugs</strong>.
-            See the paper for full AUC/ACC/Precision/Recall/F1 metrics and UMAP analyses.
-          </p>
-        </div>
-        <!-- (Optional) Add embedded video, carousel, or tables similar to the Nerfies template -->
+    <h2 class="title is-3">Latent Alignment: UMAP Visualizations</h2>
+    <p class="is-size-6 has-text-grey">
+      (a) Before Training – clear domain gap; (b) DeepCDR – cluster separation is reinforced (overfits to GDSC);
+      (c) WANCDR – reduces the gap via adversarial alignment, improving TCGA generalization.
+    </p>
+
+    <div class="columns is-variable is-4 is-multiline">
+      <div class="column is-one-third">
+        <figure class="image">
+          <img src="./static/images/wancdr/umap_before.png" alt="(a) Before Training: clear gap between GDSC and TCGA" loading="lazy">
+          <figcaption>(a) Before Training — Strong domain gap between GDSC (blue) and TCGA (orange).</figcaption>
+        </figure>
+      </div>
+      <div class="column is-one-third">
+        <figure class="image">
+          <img src="./static/images/wancdr/umap_deepcdr.png" alt="(b) DeepCDR: domain-specific features; overfitting to GDSC" loading="lazy">
+          <figcaption>(b) DeepCDR — Learns discriminative yet domain-specific features (overfit to GDSC).</figcaption>
+        </figure>
+      </div>
+      <div class="column is-one-third">
+        <figure class="image">
+          <img src="./static/images/wancdr/umap_wancdr.png" alt="(c) WANCDR: aligned latent space for transfer to TCGA" loading="lazy">
+          <figcaption>(c) WANCDR — Narrows the domain gap; aligned latents enable transfer to TCGA.</figcaption>
+        </figure>
       </div>
     </div>
   </div>
 </section>
-<!-- Table 1: TCGA with multirow style using rowspan -->
-<h3 class="title is-4">TCGA: Seen vs Unseen</h3>
-<p class="is-size-6 has-text-grey">간단 캡션: TCGA에서 drug–gene 학습 여부(Seen/Unseen)에 따른 분류 성능.</p>
 
-<div class="table-container">
-  <table class="table is-striped is-hoverable is-fullwidth is-narrow">
-    <thead>
-      <tr>
-        <th>Dataset</th>
-        <th>Model</th>
-        <th>AUC</th>
-        <th>ACC</th>
-        <th>Precision</th>
-        <th>Recall</th>
-        <th>F1</th>
-      </tr>
-    </thead>
-    <tbody>
-      <!-- Seen (2행 묶기) -->
-      <tr>
-        <th scope="rowgroup" rowspan="2">Seen</th>
-        <td>WANCDR</td>
-        <td><strong>0.690(0.048)</strong></td>
-        <td><strong>0.660(0.029)</strong></td>
-        <td><strong>0.671(0.027)</strong></td>
-        <td><strong>0.569(0.144)</strong></td>
-        <td><strong>0.604(0.087)</strong></td>
-      </tr>
-      <tr>
-        <!-- 주의: 여기엔 Dataset 칸 없음! -->
-        <td>DeepCDR</td>
-        <td>0.554(0.044)</td>
-        <td>0.595(0.045)</td>
-        <td>0.639(0.097)</td>
-        <td>0.431(0.121)</td>
-        <td>0.496(0.054)</td>
-      </tr>
+<!-- INTUITION -->
+<section class="section" id="intuition">
+  <div class="container is-max-desktop">
+    <h2 class="title is-3">Why This Experiment? (Intuition)</h2>
+    <div class="content">
+      <p>
+        <strong>Problem.</strong> Cell-line (GDSC) and patient (TCGA) distributions differ markedly. A model optimized only
+        for GDSC tends to learn <em>domain-specific</em> features; UMAP shows separated clusters, and predictions do not transfer to TCGA.
+      </p>
+      <p>
+        <strong>WANCDR.</strong> We adversarially align latent representations using a Wasserstein critic with unlabeled TCGA.
+        This reduces the source–target domain gap while preserving predictive structure, improving clinical generalization,
+        including for <em>unseen drug–gene pairs</em>.
+      </p>
+      <p>
+        <strong>Takeaway.</strong> DeepCDR reinforces the gap (good on GDSC, weak transfer), whereas WANCDR narrows it and
+        performs robustly on TCGA.
+      </p>
+    </div>
+  </div>
+</section>
 
-      <!-- Unseen (2행 묶기) -->
-      <tr>
-        <th scope="rowgroup" rowspan="2">Unseen</th>
-        <td>WANCDR</td>
-        <td><strong>0.632(0.017)</strong></td>
-        <td><strong>0.622(0.015)</strong></td>
-        <td><strong>0.641(0.031)</strong></td>
-        <td><strong>0.623(0.143)</strong></td>
-        <td><strong>0.622(0.059)</strong></td>
-      </tr>
-      <tr>
-        <td>DeepCDR</td>
-        <td>0.534(0.040)</td>
-        <td>0.568(0.022)</td>
-        <td>0.597(0.058)</td>
-        <td>0.614(0.239)</td>
-        <td>0.573(0.107)</td>
-      </tr>
-    </tbody>
-  </table>
-</div>
+<!-- TABLES -->
+<section class="section" id="tables">
+  <div class="container is-max-desktop">
 
+    <!-- Table 1: TCGA Seen vs Unseen -->
+    <div class="table-container">
+      <table class="table is-striped is-hoverable is-fullwidth">
+        <caption>TCGA performance on seen vs. unseen drug–gene expression pairs (mean (std)).</caption>
+        <thead>
+          <tr>
+            <th>Dataset</th>
+            <th>Model</th>
+            <th>AUC</th>
+            <th>ACC</th>
+            <th>Precision</th>
+            <th>Recall</th>
+            <th>F1</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="rowgroup" rowspan="2">Seen</th>
+            <td>WANCDR</td>
+            <td><strong>0.690(0.048)</strong></td>
+            <td><strong>0.660(0.029)</strong></td>
+            <td><strong>0.671(0.027)</strong></td>
+            <td><strong>0.569(0.144)</strong></td>
+            <td><strong>0.604(0.087)</strong></td>
+          </tr>
+          <tr>
+            <td>DeepCDR</td>
+            <td>0.554(0.044)</td>
+            <td>0.595(0.045)</td>
+            <td>0.639(0.097)</td>
+            <td>0.431(0.121)</td>
+            <td>0.496(0.054)</td>
+          </tr>
+          <tr>
+            <th scope="rowgroup" rowspan="2">Unseen</th>
+            <td>WANCDR</td>
+            <td><strong>0.632(0.017)</strong></td>
+            <td><strong>0.622(0.015)</strong></td>
+            <td><strong>0.641(0.031)</strong></td>
+            <td><strong>0.623(0.143)</strong></td>
+            <td><strong>0.622(0.059)</strong></td>
+          </tr>
+          <tr>
+            <td>DeepCDR</td>
+            <td>0.534(0.040)</td>
+            <td>0.568(0.022)</td>
+            <td>0.597(0.058)</td>
+            <td>0.614(0.239)</td>
+            <td>0.573(0.107)</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
 
-<h3 class="title is-4 mt-6">GDSC vs TCGA: WANCDR vs DeepCDR</h3>
-<p class="is-size-6 has-text-grey">간단 캡션: 전임상(GDSC)·임상(TCGA) 성능 비교.</p>
+    <!-- Table 2: GDSC vs TCGA, WANCDR vs DeepCDR -->
+    <div class="table-container" style="margin-top:2rem;">
+      <table class="table is-striped is-hoverable is-fullwidth">
+        <caption>Comparison on preclinical (GDSC) and clinical (TCGA) datasets: WANCDR vs. DeepCDR (mean (std)).</caption>
+        <thead>
+          <tr>
+            <th>Dataset</th>
+            <th>Model</th>
+            <th>AUC</th>
+            <th>ACC</th>
+            <th>Precision</th>
+            <th>Recall</th>
+            <th>F1</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="rowgroup" rowspan="2">GDSC</th>
+            <td>WANCDR</td>
+            <td>0.815(0.010)</td>
+            <td>0.753(0.023)</td>
+            <td>0.284(0.019)</td>
+            <td>0.723(0.032)</td>
+            <td>0.407(0.016)</td>
+          </tr>
+          <tr>
+            <td>DeepCDR</td>
+            <td><strong>0.832(0.002)</strong></td>
+            <td><strong>0.762(0.017)</strong></td>
+            <td><strong>0.295(0.014)</strong></td>
+            <td><strong>0.737(0.022)</strong></td>
+            <td><strong>0.421(0.011)</strong></td>
+          </tr>
+          <tr>
+            <th scope="rowgroup" rowspan="2">TCGA</th>
+            <td>WANCDR</td>
+            <td><strong>0.672(0.032)</strong></td>
+            <td><strong>0.644(0.024)</strong></td>
+            <td><strong>0.656(0.015)</strong></td>
+            <td><strong>0.561(0.096)</strong></td>
+            <td><strong>0.601(0.059)</strong></td>
+          </tr>
+          <tr>
+            <td>DeepCDR</td>
+            <td>0.550(0.030)</td>
+            <td>0.574(0.028)</td>
+            <td>0.609(0.070)</td>
+            <td>0.416(0.143)</td>
+            <td>0.496(0.054)</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
 
-<div class="table-container">
-  <table class="table is-striped is-hoverable is-fullwidth is-narrow">
-    <thead>
-      <tr>
-        <th>Dataset</th><th>Model</th><th>AUC</th><th>ACC</th>
-        <th>Precision</th><th>Recall</th><th>F1</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <th scope="rowgroup" rowspan="2">GDSC</th>
-        <td>WANCDR</td><td>0.815(0.010)</td><td>0.753(0.023)</td>
-        <td>0.284(0.019)</td><td>0.723(0.032)</td><td>0.407(0.016)</td>
-      </tr>
-      <tr>
-        <td>DeepCDR</td>
-        <td><strong>0.832(0.002)</strong></td>
-        <td><strong>0.762(0.017)</strong></td>
-        <td><strong>0.295(0.014)</strong></td>
-        <td><strong>0.737(0.022)</strong></td>
-        <td><strong>0.421(0.011)</strong></td>
-      </tr>
-      <tr>
-        <th scope="rowgroup" rowspan="2">TCGA</th>
-        <td>WANCDR</td>
-        <td><strong>0.672(0.032)</strong></td>
-        <td><strong>0.644(0.024)</strong></td>
-        <td><strong>0.656(0.015)</strong></td>
-        <td><strong>0.561(0.096)</strong></td>
-        <td><strong>0.601(0.059)</strong></td>
-      </tr>
-      <tr>
-        <td>DeepCDR</td>
-        <td>0.550(0.030)</td><td>0.574(0.028)</td>
-        <td>0.609(0.070)</td><td>0.416(0.143)</td><td>0.496(0.054)</td>
-      </tr>
-    </tbody>
-  </table>
-</div>
-
+  </div>
+</section>
 
 <!-- BIBTEX -->
 <section class="section" id="BibTeX">
@@ -300,11 +323,9 @@
 <footer class="footer">
   <div class="container">
     <div class="content has-text-centered">
-      <!-- Replace with your final paper link -->
       <a class="icon-link" href="./static/papers/WANCDR.pdf" aria-label="PDF">
         <i class="fas fa-file-pdf"></i>
       </a>
-      <!-- Replace with your GitHub -->
       <a class="icon-link" href="https://github.com/yourname/wancdr" aria-label="GitHub">
         <i class="fab fa-github"></i>
       </a>

@@ -157,3 +157,18 @@ body {
 }
 
 td[rowspan], th[rowspan] { vertical-align: middle; }
+
+/* --- WANCDR tables & figures --- */
+#tables .table-container { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+#tables table { width: 100%; table-layout: auto; }
+#tables caption { caption-side: top; text-align: left; font-weight: 600; margin-bottom: .5rem; }
+#tables td[rowspan], #tables th[rowspan] { vertical-align: middle; }
+#tables thead th:nth-child(n+3),
+#tables tbody td:nth-child(n+3) { text-align: right; } /* 숫자열 우측 정렬 */
+
+#alignment figure figcaption {
+  font-size: 0.9rem;
+  color: #4a4a4a;
+  margin-top: .5rem;
+  text-align: center;
+}
