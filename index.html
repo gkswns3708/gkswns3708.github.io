@@ -136,27 +136,7 @@
   </div>
 </section>
 
-<!-- INTUITION -->
-<section class="section" id="intuition">
-  <div class="container is-max-desktop">
-    <h2 class="title is-3">Why This Experiment? (Intuition)</h2>
-    <div class="content">
-      <p>
-        <strong>Problem.</strong> Cell-line (GDSC) and patient (TCGA) distributions differ markedly. A model optimized only
-        for GDSC tends to learn <em>domain-specific</em> features; UMAP shows separated clusters, and predictions do not transfer to TCGA.
-      </p>
-      <p>
-        <strong>WANCDR.</strong> We adversarially align latent representations using a Wasserstein critic with unlabeled TCGA.
-        This reduces the source–target domain gap while preserving predictive structure, improving clinical generalization,
-        including for <em>unseen drug–gene pairs</em>.
-      </p>
-      <p>
-        <strong>Takeaway.</strong> DeepCDR reinforces the gap (good on GDSC, weak transfer), whereas WANCDR narrows it and
-        performs robustly on TCGA.
-      </p>
-    </div>
-  </div>
-</section>
+
 
 <!-- FIGURES: UMAP ALIGNMENT -->
 <section class="section" id="alignment">
