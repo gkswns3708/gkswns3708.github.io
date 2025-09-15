@@ -138,49 +138,40 @@ body {
   border-radius: 5px;
 }
 
-td[rowspan], th[rowspan] { vertical-align: middle; }
-
-/* --- WANCDR tables & figures --- */
-#tables .table-container { overflow-x: auto; -webkit-overflow-scrolling: touch; }
-#tables table { width: 100%; table-layout: auto; }
-#tables caption { caption-side: top; text-align: left; font-weight: 600; margin-bottom: .5rem; }
-#tables td[rowspan], #tables th[rowspan] { vertical-align: middle; }
-
-/* Numeric columns: right align + tabular numbers for perfect vertical alignment */
-#tables thead th:nth-child(n+3),
-#tables tbody td:nth-child(n+3) {
-  text-align: right;                    /* 숫자열 우측 정렬 */
-  font-variant-numeric: tabular-nums lining-nums;
+/* === FIX: numeric columns (AUC~F1) alignment robust to rowspan === */
+/* 헤더와 본문 모두 '끝에서 5개 셀'을 숫자열로 간주 → rowspan 영향 없음 */
+#tables thead tr > th:nth-last-child(-n+5),
+#tables tbody tr > td:nth-last-child(-n+5) {
+  text-align: right;
+  font-variant-numeric: tabular-nums lining-nums;  /* 등폭 숫자 */
   font-feature-settings: "tnum" 1, "lnum" 1;
 }
+
+/* 폴백: 브라우저/폰트가 tabular-nums 미지원일 때 모노스페이스 사용 */
 @supports not (font-variant-numeric: tabular-nums) {
-  #tables thead th:nth-child(n+3),
-  #tables tbody td:nth-child(n+3) {
+  #tables thead tr > th:nth-last-child(-n+5),
+  #tables tbody tr > td:nth-last-child(-n+5) {
     font-family: "Roboto Mono","Noto Sans Mono",ui-monospace,Menlo,Consolas,monospace;
     letter-spacing: .01em;
   }
 }
 
-#alignment figure figcaption {
-  font-size: 0.9rem;
-  color: #4a4a4a;
-  margin-top: .5rem;
-  text-align: center;
-}
-/* rowgroup <th>를 일반 셀처럼 보이게: 굵기/배경 제거 + 줄바꿈 방지 */
-#tables tbody th[scope="rowgroup"]{
-  font-weight: 400;            /* td와 동일 굵기 */
-  background: transparent;     /* 스트라이프 배경 제거 */
-  vertical-align: middle;      /* 세로 가운데 */
-  white-space: nowrap;         /* 줄바꿈 방지 → 폭 흔들림 방지 */
+/* rowgroup 셀(Seen/Unseen/GDSC/TCGA)은 td/th 어떤 걸 쓰든 일반 셀처럼 보이게 */
+#tables tbody th[scope="rowgroup"],
+#tables tbody td[scope="rowgroup"] {
+  font-weight: 400;
+  background: transparent;
+  vertical-align: middle;
+  white-space: nowrap;
   text-align: left;
-  padding-left: 0.75rem;       /* td와 동일 패딩 유지 */
+  padding-left: 0.75rem;
   padding-right: 0.75rem;
 }
 
-/* 스트라이프 테이블에서 rowgroup 셀에만 배경 강제 제거(2줄 병합 시 착시 방지) */
+/* Bulma 지브라 배경이 rowspan에 덮여 보이는 착시 방지 */
 #tables .table.is-striped tbody tr:nth-child(odd) th[scope="rowgroup"],
-#tables .table.is-striped tbody tr:nth-child(even) th[scope="rowgroup"]{
+#tables .table.is-striped tbody tr:nth-child(even) th[scope="rowgroup"],
+#tables .table.is-striped tbody tr:nth-child(odd) td[scope="rowgroup"],
+#tables .table.is-striped tbody tr:nth-child(even) td[scope="rowgroup"] {
   background: transparent !important;
 }
-#tables tbody td.rowgroup { white-space: nowrap; vertical-align: middle; }

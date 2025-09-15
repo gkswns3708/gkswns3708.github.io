@@ -20,25 +20,7 @@
   <!-- Small page-specific styles (tables, captions) -->
   <style>
     /* Keep tables within max width; allow smooth horizontal scroll on mobile */
-    #tables .table-container { overflow-x: auto; -webkit-overflow-scrolling: touch; }
-    #tables table { width: 100%; table-layout: auto; }
-    #tables caption { caption-side: top; text-align: left; font-weight: 600; margin-bottom: .5rem; }
-    #tables td[rowspan], #tables th[rowspan] { vertical-align: middle; }
 
-    /* Numeric columns: right align + tabular numbers for perfect vertical alignment */
-    #tables thead th:nth-child(n+3),
-    #tables tbody td:nth-child(n+3) {
-      text-align: right;
-      font-variant-numeric: tabular-nums lining-nums;
-      font-feature-settings: "tnum" 1, "lnum" 1;
-    }
-    @supports not (font-variant-numeric: tabular-nums) {
-      #tables thead th:nth-child(n+3),
-      #tables tbody td:nth-child(n+3) {
-        font-family: "Roboto Mono","Noto Sans Mono",ui-monospace,Menlo,Consolas,monospace;
-        letter-spacing: .01em;
-      }
-    }
 
     /* Figure captions */
     #alignment figure figcaption { font-size: 0.9rem; color: #4a4a4a; margin-top: .5rem; text-align: center; }
@@ -224,7 +206,7 @@
         </thead>
         <tbody>
           <tr>
-            <th scope="rowgroup" rowspan="2">Seen</th>
+            <td scope="rowgroup" rowspan="2">Seen</td>
             <td>WANCDR</td>
             <td><strong>0.690(0.048)</strong></td>
             <td><strong>0.660(0.029)</strong></td>
@@ -241,7 +223,7 @@
             <td>0.496(0.054)</td>
           </tr>
           <tr>
-            <th scope="rowgroup" rowspan="2">Unseen</th>
+            <td scope="rowgroup" rowspan="2">Unseen</td>
             <td>WANCDR</td>
             <td><strong>0.632(0.017)</strong></td>
             <td><strong>0.622(0.015)</strong></td>
@@ -278,7 +260,7 @@
         </thead>
         <tbody>
           <tr>
-            <th scope="rowgroup" rowspan="2">GDSC</th>
+            <td class="rowgroup" rowspan="2">GDSC</td>
             <td>WANCDR</td>
             <td>0.815(0.010)</td>
             <td>0.753(0.023)</td>
@@ -295,7 +277,7 @@
             <td><strong>0.421(0.011)</strong></td>
           </tr>
           <tr>
-            <th scope="rowgroup" rowspan="2">TCGA</th>
+            <td scope="rowgroup" rowspan="2">TCGA</td>
             <td>WANCDR</td>
             <td><strong>0.672(0.032)</strong></td>
             <td><strong>0.644(0.024)</strong></td>
