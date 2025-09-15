@@ -1,0 +1,28 @@
+- title: Diffusion-Guided Weakly Supervised Anomaly Detection
+authors: Doe, J.; Kim, A.; Aimed Lab
+venue: MedImaging (MICCAI Workshop)
+year: 2025
+tags: [diffusion, anomaly, medical]
+link: /web/index.html#paper-diffusion-wsad # your lightweight index target
+pdf: https://arxiv.org/abs/0000.00000
+code: https://github.com/aimedlab123123/project-wsad
+
+
+- title: Graph Convolutional Transformers for EHR Outcome Prediction
+authors: Aimed Lab; Lee, S.; Park, J.
+venue: Journal of Biomedical Informatics
+year: 2024
+tags: [ehr, graph, transformer]
+link: /web/index.html#paper-gct-ehr
+pdf: https://arxiv.org/abs/0000.00001
+code: https://github.com/aimedlab123123/gct-ehr
+
+
+- title: Cognitive Resilience and Structural Connectivity
+authors: Aimed Lab; Choi, Y.;
+venue: NeuroImage
+year: 2023
+tags: [alzheimers, connectome, resilience]
+link: /web/index.html#paper-resilience-sc
+pdf: https://doi.org/10.0000/example
+code:
