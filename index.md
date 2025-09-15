@@ -6,15 +6,15 @@ title: ""
 
 <div style="display:flex; gap:24px; align-items:center; flex-wrap:wrap;">
   <style>
-    .avatar-wrap{position:relative; width:140px; height:140px; border-radius:50%; padding:3px;
-      background: conic-gradient(from 180deg, #a78bfa, #60a5fa, #34d399, #f472b6, #a78bfa);}
-    .avatar-wrap img{width:100%; height:100%; border-radius:50%; object-fit:cover; display:block; background:#f6f6f6;}
-    .avatar-wrap:hover{transform:translateY(-2px); box-shadow:0 8px 24px rgba(0,0,0,.12); transition:.25s;}
-  </style>
+  .avatar-wrap{position:relative; width:140px; height:140px; border-radius:50%; padding:3px;
+    background: conic-gradient(from 180deg, #a78bfa, #60a5fa, #34d399, #f472b6, #a78bfa);}
+  .avatar-wrap img{width:100%; height:100%; border-radius:50%; object-fit:cover; display:block; background:#f6f6f6;}
+  .avatar-wrap:hover{transform:translateY(-2px); box-shadow:0 8px 24px rgba(0,0,0,.12); transition:.25s;}
+</style>
 
-  <div class="avatar-wrap" title="{{ site.author.name }}">
-    <img src="{{ site.author.avatar | relative_url }}" alt="profile of {{ site.author.name }}">
-  </div>
+<div class="avatar-wrap" title="{{ site.author.name }}">
+  <img src="{{ site.author.avatar | relative_url }}" alt="profile of {{ site.author.name }}">
+</div>
   <div>
     <h1 style="margin:0 0 6px 0;">{{ site.author.name }}</h1>
     <p style="margin:0 0 10px 0; color:#666;">

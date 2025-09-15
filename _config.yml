@@ -22,14 +22,14 @@ skin: daylight
 
 # --- Author / Social (used on index.md) ---
 author: 
-  name: HanJun Choi
-  email: gkswns1290@gmail.com
-  org: Aimed-lab
-  role: PhD Candidate
-  location: Gwangju, Korea
-  avatar: /assets/img/profile.png
-  github: gkswns3708 # GitHub username
-  linkedin: "한준-최-b8ab5123a"
+name: HanJun Choi
+email: gkswns1290@gmail.com
+org: Aimed-lab
+role: PhD Candidate
+location: Gwangju, Korea
+avatar: /assets/img/profile.png
+github: gkswns3708 # GitHub username
+linkedin: "한준-최-b8ab5123a"
 
 # Permalinks for posts (optional)
 permalink: /:categories/:year/:month/:day/:title/
