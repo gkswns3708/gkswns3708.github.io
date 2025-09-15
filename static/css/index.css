@@ -167,3 +167,20 @@ td[rowspan], th[rowspan] { vertical-align: middle; }
   margin-top: .5rem;
   text-align: center;
 }
+/* rowgroup <th>를 일반 셀처럼 보이게: 굵기/배경 제거 + 줄바꿈 방지 */
+#tables tbody th[scope="rowgroup"]{
+  font-weight: 400;            /* td와 동일 굵기 */
+  background: transparent;     /* 스트라이프 배경 제거 */
+  vertical-align: middle;      /* 세로 가운데 */
+  white-space: nowrap;         /* 줄바꿈 방지 → 폭 흔들림 방지 */
+  text-align: left;
+  padding-left: 0.75rem;       /* td와 동일 패딩 유지 */
+  padding-right: 0.75rem;
+}
+
+/* 스트라이프 테이블에서 rowgroup 셀에만 배경 강제 제거(2줄 병합 시 착시 방지) */
+#tables .table.is-striped tbody tr:nth-child(odd) th[scope="rowgroup"],
+#tables .table.is-striped tbody tr:nth-child(even) th[scope="rowgroup"]{
+  background: transparent !important;
+}
+#tables tbody td.rowgroup { white-space: nowrap; vertical-align: middle; }

@@ -24,7 +24,21 @@
     #tables table { width: 100%; table-layout: auto; }
     #tables caption { caption-side: top; text-align: left; font-weight: 600; margin-bottom: .5rem; }
     #tables td[rowspan], #tables th[rowspan] { vertical-align: middle; }
-    #tables thead th:nth-child(n+3), #tables tbody td:nth-child(n+3) { text-align: right; } /* numeric cols */
+
+    /* Numeric columns: right align + tabular numbers for perfect vertical alignment */
+    #tables thead th:nth-child(n+3),
+    #tables tbody td:nth-child(n+3) {
+      text-align: right;
+      font-variant-numeric: tabular-nums lining-nums;
+      font-feature-settings: "tnum" 1, "lnum" 1;
+    }
+    @supports not (font-variant-numeric: tabular-nums) {
+      #tables thead th:nth-child(n+3),
+      #tables tbody td:nth-child(n+3) {
+        font-family: "Roboto Mono","Noto Sans Mono",ui-monospace,Menlo,Consolas,monospace;
+        letter-spacing: .01em;
+      }
+    }
 
     /* Figure captions */
     #alignment figure figcaption { font-size: 0.9rem; color: #4a4a4a; margin-top: .5rem; text-align: center; }
@@ -101,7 +115,6 @@
                   <span>Code</span>
                 </a>
               </span>
-              <!-- (Optional) arXiv / Video / Data buttons can be added similarly -->
             </div>
           </div>
 
@@ -136,8 +149,6 @@
   </div>
 </section>
 
-
-
 <!-- FIGURES: UMAP ALIGNMENT -->
 <section class="section" id="alignment">
   <div class="container is-max-desktop">
@@ -170,7 +181,27 @@
   </div>
 </section>
 
-
+<!-- INTUITION -->
+<section class="section" id="intuition">
+  <div class="container is-max-desktop">
+    <h2 class="title is-3">Why This Experiment? (Intuition)</h2>
+    <div class="content">
+      <p>
+        <strong>Problem.</strong> Cell-line (GDSC) and patient (TCGA) distributions differ markedly. A model optimized only
+        for GDSC tends to learn <em>domain-specific</em> features; UMAP shows separated clusters, and predictions do not transfer to TCGA.
+      </p>
+      <p>
+        <strong>WANCDR.</strong> We adversarially align latent representations using a Wasserstein critic with unlabeled TCGA.
+        This reduces the source–target domain gap while preserving predictive structure, improving clinical generalization,
+        including for <em>unseen drug–gene pairs</em>.
+      </p>
+      <p>
+        <strong>Takeaway.</strong> DeepCDR reinforces the gap (good on GDSC, weak transfer), whereas WANCDR narrows it and
+        performs robustly on TCGA.
+      </p>
+    </div>
+  </div>
+</section>
 
 <!-- TABLES -->
 <section class="section" id="tables">
