@@ -177,133 +177,110 @@
     </div>
   </div>
 </section>
-<!-- ===== Tables (TCGA Seen/Unseen + GDSC/TCGA) ===== -->
-<section class="section" id="tables">
-  <div class="container is-max-desktop">
+<!-- Table 1: TCGA with multirow style using rowspan -->
+<h3 class="title is-4">TCGA: Seen vs Unseen</h3>
+<p class="is-size-6 has-text-grey">간단 캡션: TCGA에서 drug–gene 학습 여부(Seen/Unseen)에 따른 분류 성능.</p>
 
-    <!-- Table 1 -->
-    <h3 class="title is-4">TCGA: Seen vs Unseen</h3>
-    <p class="is-size-6 has-text-grey">
-      간단 캡션: TCGA에서 <em>drug–gene</em> 쌍의 학습 여부(Seen/Unseen)에 따른 분류 성능(평균(표준편차)).
-    </p>
-    <div class="table-container">
-      <table class="table is-striped is-hoverable is-fullwidth is-narrow">
-        <thead>
-          <tr>
-            <th>Dataset</th>
-            <th>Model</th>
-            <th>AUC</th>
-            <th>ACC</th>
-            <th>Precision</th>
-            <th>Recall</th>
-            <th>F1</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>Seen</td>
-            <td>WANCDR</td>
-            <td><strong>0.690(0.048)</strong></td>
-            <td><strong>0.660(0.029)</strong></td>
-            <td><strong>0.671(0.027)</strong></td>
-            <td><strong>0.569(0.144)</strong></td>
-            <td><strong>0.604(0.087)</strong></td>
-          </tr>
-          <tr>
-            <td>Seen</td>
-            <td>DeepCDR</td>
-            <td>0.554(0.044)</td>
-            <td>0.595(0.045)</td>
-            <td>0.639(0.097)</td>
-            <td>0.431(0.121)</td>
-            <td>0.496(0.054)</td>
-          </tr>
-          <tr>
-            <td>Unseen</td>
-            <td>WANCDR</td>
-            <td><strong>0.632(0.017)</strong></td>
-            <td><strong>0.622(0.015)</strong></td>
-            <td><strong>0.641(0.031)</strong></td>
-            <td><strong>0.623(0.143)</strong></td>
-            <td><strong>0.622(0.059)</strong></td>
-          </tr>
-          <tr>
-            <td>Unseen</td>
-            <td>DeepCDR</td>
-            <td>0.534(0.040)</td>
-            <td>0.568(0.022)</td>
-            <td>0.597(0.058)</td>
-            <td>0.614(0.239)</td>
-            <td>0.573(0.107)</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
+<div class="table-container">
+  <table class="table is-striped is-hoverable is-fullwidth is-narrow">
+    <thead>
+      <tr>
+        <th>Dataset</th>
+        <th>Model</th>
+        <th>AUC</th>
+        <th>ACC</th>
+        <th>Precision</th>
+        <th>Recall</th>
+        <th>F1</th>
+      </tr>
+    </thead>
+    <tbody>
+      <!-- Seen (2행 묶기) -->
+      <tr>
+        <th scope="rowgroup" rowspan="2">Seen</th>
+        <td>WANCDR</td>
+        <td><strong>0.690(0.048)</strong></td>
+        <td><strong>0.660(0.029)</strong></td>
+        <td><strong>0.671(0.027)</strong></td>
+        <td><strong>0.569(0.144)</strong></td>
+        <td><strong>0.604(0.087)</strong></td>
+      </tr>
+      <tr>
+        <!-- 주의: 여기엔 Dataset 칸 없음! -->
+        <td>DeepCDR</td>
+        <td>0.554(0.044)</td>
+        <td>0.595(0.045)</td>
+        <td>0.639(0.097)</td>
+        <td>0.431(0.121)</td>
+        <td>0.496(0.054)</td>
+      </tr>
 
-    <!-- Table 2 -->
-    <h3 class="title is-4 mt-6">GDSC vs TCGA: WANCDR vs DeepCDR</h3>
-    <p class="is-size-6 has-text-grey">
-      간단 캡션: 전임상(GDSC)과 임상(TCGA)에서 WANCDR과 DeepCDR의 분류 성능(평균(표준편차)).
-    </p>
-    <div class="table-container">
-      <table class="table is-striped is-hoverable is-fullwidth is-narrow">
-        <thead>
-          <tr>
-            <th>Dataset</th>
-            <th>Model</th>
-            <th>AUC</th>
-            <th>ACC</th>
-            <th>Precision</th>
-            <th>Recall</th>
-            <th>F1</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>GDSC</td>
-            <td>WANCDR</td>
-            <td>0.815(0.010)</td>
-            <td>0.753(0.023)</td>
-            <td>0.284(0.019)</td>
-            <td>0.723(0.032)</td>
-            <td>0.407(0.016)</td>
-          </tr>
-          <tr>
-            <td>GDSC</td>
-            <td>DeepCDR</td>
-            <td><strong>0.832(0.002)</strong></td>
-            <td><strong>0.762(0.017)</strong></td>
-            <td><strong>0.295(0.014)</strong></td>
-            <td><strong>0.737(0.022)</strong></td>
-            <td><strong>0.421(0.011)</strong></td>
-          </tr>
-          <tr>
-            <td>TCGA</td>
-            <td>WANCDR</td>
-            <td><strong>0.672(0.032)</strong></td>
-            <td><strong>0.644(0.024)</strong></td>
-            <td><strong>0.656(0.015)</strong></td>
-            <td><strong>0.561(0.096)</strong></td>
-            <td><strong>0.601(0.059)</strong></td>
-          </tr>
-          <tr>
-            <td>TCGA</td>
-            <td>DeepCDR</td>
-            <td>0.550(0.030)</td>
-            <td>0.574(0.028)</td>
-            <td>0.609(0.070)</td>
-            <td>0.416(0.143)</td>
-            <td>0.496(0.054)</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
+      <!-- Unseen (2행 묶기) -->
+      <tr>
+        <th scope="rowgroup" rowspan="2">Unseen</th>
+        <td>WANCDR</td>
+        <td><strong>0.632(0.017)</strong></td>
+        <td><strong>0.622(0.015)</strong></td>
+        <td><strong>0.641(0.031)</strong></td>
+        <td><strong>0.623(0.143)</strong></td>
+        <td><strong>0.622(0.059)</strong></td>
+      </tr>
+      <tr>
+        <td>DeepCDR</td>
+        <td>0.534(0.040)</td>
+        <td>0.568(0.022)</td>
+        <td>0.597(0.058)</td>
+        <td>0.614(0.239)</td>
+        <td>0.573(0.107)</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
 
-    <p class="is-size-7 has-text-grey mt-4">
-      표기: 값은 <code>mean(std)</code> 형식입니다.
-    </p>
-  </div>
-</section>
+
+<h3 class="title is-4 mt-6">GDSC vs TCGA: WANCDR vs DeepCDR</h3>
+<p class="is-size-6 has-text-grey">간단 캡션: 전임상(GDSC)·임상(TCGA) 성능 비교.</p>
+
+<div class="table-container">
+  <table class="table is-striped is-hoverable is-fullwidth is-narrow">
+    <thead>
+      <tr>
+        <th>Dataset</th><th>Model</th><th>AUC</th><th>ACC</th>
+        <th>Precision</th><th>Recall</th><th>F1</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th scope="rowgroup" rowspan="2">GDSC</th>
+        <td>WANCDR</td><td>0.815(0.010)</td><td>0.753(0.023)</td>
+        <td>0.284(0.019)</td><td>0.723(0.032)</td><td>0.407(0.016)</td>
+      </tr>
+      <tr>
+        <td>DeepCDR</td>
+        <td><strong>0.832(0.002)</strong></td>
+        <td><strong>0.762(0.017)</strong></td>
+        <td><strong>0.295(0.014)</strong></td>
+        <td><strong>0.737(0.022)</strong></td>
+        <td><strong>0.421(0.011)</strong></td>
+      </tr>
+      <tr>
+        <th scope="rowgroup" rowspan="2">TCGA</th>
+        <td>WANCDR</td>
+        <td><strong>0.672(0.032)</strong></td>
+        <td><strong>0.644(0.024)</strong></td>
+        <td><strong>0.656(0.015)</strong></td>
+        <td><strong>0.561(0.096)</strong></td>
+        <td><strong>0.601(0.059)</strong></td>
+      </tr>
+      <tr>
+        <td>DeepCDR</td>
+        <td>0.550(0.030)</td><td>0.574(0.028)</td>
+        <td>0.609(0.070)</td><td>0.416(0.143)</td><td>0.496(0.054)</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
 
 <!-- BIBTEX -->
 <section class="section" id="BibTeX">

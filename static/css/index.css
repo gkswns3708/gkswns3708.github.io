@@ -155,3 +155,5 @@ body {
 #interpolation-image-wrapper img {
   border-radius: 5px;
 }
+
+td[rowspan], th[rowspan] { vertical-align: middle; }
