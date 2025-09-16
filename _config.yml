@@ -4,7 +4,7 @@ lang: ko
 timezone: Asia/Seoul
 
 description: >-
-  Researcher / Developer. 관심사: Segmentation, LLM, Chemical Interaction, Drug Response Prediction
+  Research Interest: Image-Based Segmentation, LLM with Chemical Interaction, Drug Response Prediction
 
 # --- Theme ---
 remote_theme: ngzhio/jekyll-theme-hamilton
